@@ -9,7 +9,7 @@ var productos = [
 // esta funcion lo que hace es que al pedir la opcion 2, busca los productos que hay y los agrega al carrito.
 function buscarProducto(nombre) {
     for (var i = 0; i < productos.length; i++) {
-        if (productos[i].nombre === nombre) {
+        if (productos[i].nombre.toLowerCase() === nombre.toLowerCase()) {
             return productos[i];
         }
     }
@@ -49,7 +49,7 @@ while (true) {
         // si se elije la opcion 3 te pregunta por seguridad si se quiere vaciar el carrito o no. Al ingresar "s" se llama a la funcion vaciar carrito que lo que hace es llevar a cero el carrito
     } else if (opcion === "3") {
         var vaciarCarritoCompras = prompt("Quieres vaciar el carrito? (s/n)");
-        if (vaciarCarritoCompras === "s") {
+        if (vaciarCarritoCompras.toLowerCase() === "s") {
             vaciarCarrito();
         }
         // si se elije la opcion 4 te lleva al carrito, en caso de no tener productos en el carrito te dirá que no hay productos en el carrito.
