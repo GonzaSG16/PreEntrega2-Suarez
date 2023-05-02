@@ -58,12 +58,11 @@ while (true) {
         if (carrito.length === 0) {
             alert("No se agregaron productos al carrito.");
         } else {
-            var factura = "Productos en tu carrito:\n";
-            for (var i = 0; i < carrito.length; i++) {
-                factura += carrito[i].cantidad + " x " + carrito[i].producto.nombre + " = " + carrito[i].subtotal.toFixed(2) + " ARS\n";
-            }
-            // aca te pregunta con un "ACEPTAR" o "CANCELAR" si se desea confirmar la compra. En caso de poner "ACEPTAR", este tira un mensaje diciendo que se completó la compra y llama a la funcion vaciar carrito antes mencionada
-            // en caso de poner "CANCELAR", este cancela la compra y llama nuevamente a la funcion vaciar carrito.
+            var factura = carrito.reduce(function (acumulador, producto) {
+                acumulador += producto.cantidad + " x " + producto.producto.nombre + " = " + producto.subtotal.toFixed(2) + " ARS\n";
+                return acumulador;
+            }, "Productos en tu carrito:\n");
+
             factura += "Total: " + total.toFixed(2) + " ARS\nDeseas confirmar tu compra?";
             if (confirm(factura)) {
                 alert("Gracias por su compra. Esperamos volver a verte!");
